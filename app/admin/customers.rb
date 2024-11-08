@@ -4,14 +4,13 @@ ActiveAdmin.register Customer do
 
   index do
     selectable_column
-    column "Customers", :title
     column :full_name
     column :phone_number
     column :email
     column :notes
     column "Image" do |customer|
-      if customer.image.attached?
-        image_tag customer.image.variant(resize_to_limit: [50, 50])
+      if customer.image.present?
+        image_tag customer.image.variant(resize_to_limit: [75, 75])
       else
         "Image not Available"
       end
@@ -26,7 +25,7 @@ ActiveAdmin.register Customer do
       f.input :email
       f.input :notes
       f.inputs do
-        f.input :image, as: :file, hint: f.object.image.attached? ? image_tag(f.object.image.variant(resize_to_limit: [75,75])) : "No image Available"
+        f.input :image, as: :file, hint: f.object.image.present? ? image_tag(f.object.image.variant(resize_to_limit: [100, 100])) : "No image Available"
       end
     end
     f.actions
@@ -40,7 +39,7 @@ ActiveAdmin.register Customer do
       row :email
       row :notes
       row "Image" do |customer|
-        if customer.image.attached?
+        if customer.image.present?
           image_tag customer.image.variant(resize_to_limit: [100, 100])
         else
           "Image not Available"

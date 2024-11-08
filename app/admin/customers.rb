@@ -1,6 +1,6 @@
 ActiveAdmin.register Customer do
 
-  permit_params :full_name, :phone_number, :email, :notes
+  permit_params :full_name, :phone_number, :email, :notes, :image
 
   index do
     selectable_column
@@ -18,6 +18,9 @@ ActiveAdmin.register Customer do
       f.input :phone_number
       f.input :email
       f.input :notes
+      f.inputs do
+        f.input :image, as: :file, hint: f.object.image.present? ? image_tag(f.object.image) : ""
+      end
     end
     f.actions
   end

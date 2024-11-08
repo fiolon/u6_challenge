@@ -8,8 +8,6 @@ gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 
-gem "image_processing", ">= 1.2"
-
 # Gemfile
 gem 'sassc-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

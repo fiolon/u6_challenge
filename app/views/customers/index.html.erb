@@ -1,0 +1,5 @@
+<h1 class="title is-3 mt-4 mx-4 has-text-black">All Customers</h1>
+
+<% @customers.each do |customer| %>
+  <%= render partial: 'customer', locals: { customer: customer } %>
+<% end %>
